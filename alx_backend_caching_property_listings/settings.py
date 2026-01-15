@@ -140,12 +140,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-redis_url = f"{env('CACHE_LOCATION')}{env('REDIS_HOST')}:{env('REDIS_PORT')}/{env('REDIS_DB')}"
 
 CACHES = {
     'default': {
         'BACKEND': env('CACHE_BACKEND'),
-        'LOCATION': redis_url,
+        'LOCATION': env('REDIS_URL'),
         'OPTIONS': env.json('CACHE_OPTIONS'),
         'KEY_PREFIX': env('CACHE_KEY_PREFIX'),
     }
